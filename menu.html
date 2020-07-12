@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Food Waste</title>
+    </head>
+    <body style = "background-color:#ff6347">
+        <nav class="navbar navbar-expand-md navbar-light bg-light border">
+            <a class="navbar-brand" href="/"><span class="blue">F</span><span class="red">O</span><span class="yellow">O</span><span class="green">D</span> <span class="red">Waste</span></a>
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav mr-auto mt-2">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/order">Order</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/total">Totals</a></li>
+                </ul>
+                <ul class="navbar-nav ml-auto mt-2">
+                    <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+
+                </ul>
+            </div>
+        </nav>
+
+        <script>
+            function addingthings()
+            {
+                var quantity = document.getElementById("quantity").value;
+                var item = document.getElementById("order").value;
+                document.getElementById("quantity").value = "";
+                document.getElementById("item").value = "";
+                alert("You ordered " + quantity + " portions of " item);
+            }
+
+            function makedropdown(list)
+            {
+                for (var i=0; i < list.length; i++)
+                {
+                	year++;
+	                document.write("<select name='fuck'>");
+	                document.write("<option disabled selected hidden> Choose Item </option>")
+	                document.write("<option>" + list[i] + "</option>");
+                }
+            }
+        </script>
+
+        <h3 id = maintitle style="text-align:center; color:yellow">Minimize Waste by predicting upper bound of your consumption today!</h2>
+        </br>
+        <form action = "/menu" method = "POST" style="text-align:center">
+            <select name = "item" style="text-align:center">
+            <option disabled selected hidden> Choose Item </option>
+            {% for item in items %}
+                <option>{{ item }}</option>
+            {% endfor %}
+            </select>
+
+            <input name = "quantity" type = "number" placeholder = "Number of Portions" min="0"><br>
+            <button type="submit" onclick="alert('Order Processed')">Order</button>
+        </form>
+        <br>
+        <u><p style="color:white; text-align:center">Go back to homepage:</p></u>
+        <form action="/" method="GET" style="text-align:center">
+            <button type="submit" onclick="location.replace(/index');" style = "text-align:center">Done</button>
+        </form>
+        <br>
+
+        <p style="text-align:center; color:white">The goal is to eliminate food wasted at breakfast, lunch, and dinner<br>
+        We can determine how much food should be made</br>
+        And what can be saved for later</p>
+    </body>
+
+</html>

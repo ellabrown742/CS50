@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Food Waste</title>
+    </head>
+    <body style = "background-color:#9BE581">
+        <nav class="navbar navbar-expand-md navbar-light bg-light border">
+            <a class="navbar-brand" href="/"><span class="blue">F</span><span class="red">O</span><span class="yellow">O</span><span class="green">D</span> <span class="red">Waste</span></a>
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav mr-auto mt-2">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/order">Order</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/total">Totals</a></li>
+                </ul>
+                <ul class="navbar-nav ml-auto mt-2">
+                    <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+
+                </ul>
+            </div>
+        </nav>
+
+        <div class="alert alert-primary" role="alert">
+          <p>Food wasted today:
+          <a href = "http://www.fao.org/food-loss-and-food-waste/flw-data/en/?searchState%5Bpage%5D=1&refinementList%5Bcategory%5D%5B0%5D=&query=&page=1&configure%5BhitsPerPage%5D=10">Food Loss and Waste Database</a>
+          </p>
+        </div>
+
+        <u><h3 style="text-align:center; color:brown">Minimizing Food Waste at Harvard</h1></u>
+        </br>
+        <h4 style="text-align:center; color:brown">Use this website to record quantities of HUDS food you want for breakfast, lunch, and dinner daily!</h2>
+        <br>
+        <p style="text-align:center">Instead of HUDS staff estimating quantities of food to prepare,<br> if students submit their estimated desired quantities of food for the next day <br>a great deal of food can be preserved as food will not be made in excess</p>
+        <b><p style="text-align:center">Your current dining requests for {{ date }}:</p></b>
+
+        <table border = 2 align = "center" bgcolor="#DBF4DF" style="border-width:2px; width:50%; bgcolor:#DBF4DF">
+            <thead>
+                <tr>
+                    <th>Location</th>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in requests %}
+                    <tr>
+                        <td>{{ item['location'] }}</td>
+                        <td>{{ item['item'] }}</td>
+                        <td>{{ item['quantity'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table><br>
+        <b><p style="text-align:center">University-wide dining requests for {{ date }}:</p></b>
+
+        <table border = 2 align = "center" bgcolor="#DBF4DF" style="border-width:2px; width:50%;">
+            <thead>
+                <tr>
+                    <th>Location</th>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in total_requests %}
+                    <tr>
+                        <td>{{ item['location'] }}</td>
+                        <td>{{ item['item'] }}</td>
+                        <td>{{ item['quantity'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table><br>
+
+        <p style="text-align:center">The goal is to eliminate food wasted at breakfast, lunch, and dinner<br>
+        We can determine how much food should be made<br>
+        And what can be saved for later</p>
+    </body>
+    </body>
+</html>

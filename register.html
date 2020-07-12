@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <h4 style="color:red;">For Harvard Undergraduates on the HUDS meal plan</h4>
+    <h5>Register with a username, password, and your upperclass houses</h5>
+    <form action="/register" method="post"  style="width: 500px; text-align:center">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="confirmation" placeholder="Retype Password" type="password">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="house" placeholder="House/Dining Hall Location" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+{% endblock %}
